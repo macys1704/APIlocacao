@@ -15,4 +15,4 @@ endpoint.post('/inserir/veiculo', async (req, resp) => {
 })
 
 
-export default endpoint;
+export default endpoint
