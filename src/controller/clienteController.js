@@ -22,4 +22,5 @@ endpoint.delete('/delete', async (req, resp) => {
     resp.send('id da tabela apagado')
 })
 
+endpoint.put('/alterar/:id', async (req, re))
 export default endpoint;    

@@ -26,7 +26,20 @@ export async function deletar(id) {
     let [resposta] = await conexao.query(comando, [id])
 
     return resposta;
+}
 
+export async function alterar(id, cliente) {
+    let comando = `
+    update tb_cliente
+    set nm_cliente = ?,
+    nm_email       = ?,
+    nr_cpf         = ?,
+    nm_cnh         = ?,
+    nr_telefone    = ?,
+    where id_cliente = ?
+    `
 
+    let [resposta] = await conexao.query(comando, [cliente.nome, cliente.email, cliente.cpf, cliente.cnh, cliente.telefone, id])
 
+    return resposta.affectedRows;
 }
