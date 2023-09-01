@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deletar, inserir, listar } from "../repository/clienteRepository.js"
+import { alterar, deletar, inserir, listar } from "../repository/clienteRepository.js"
 
 let endpoint = Router()
 
@@ -22,5 +22,17 @@ endpoint.delete('/delete', async (req, resp) => {
     resp.send('id da tabela apagado')
 })
 
-endpoint.put('/alterar/:id', async (req, re))
+endpoint.put('/alterar/:id', async (req, resp) =>{
+
+try {
+
+} catch (err) {
+    resp.status(400).send({erro: })
+}
+    let cliente = req.body;
+    let id = req.params.id;
+
+    let resposta = await alterar(cliente);
+
+}) 
 export default endpoint;    
