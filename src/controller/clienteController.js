@@ -9,10 +9,20 @@ endpoint.get('/listar', async (req, resp) => {
 })
 
 endpoint.post('/inserir', async (req, resp) => {
+
+    try {
     let cliente = req.body
+
+    if(!cliente.nome)
+    throw new Error('Nome obrigatório')
+    
 
     let dados = await inserir(cliente)
     resp.send(dados)
+
+} catch (err) {
+    resp.status(400).send({erro: err.mensage})
+}
 
 })
 
@@ -27,7 +37,7 @@ endpoint.put('/alterar/:id', async (req, resp) =>{
 try {
 
 } catch (err) {
-    resp.status(400).send({erro: })
+    resp.status(400).send({erro: err.mensage})
 }
     let cliente = req.body;
     let id = req.params.id;
